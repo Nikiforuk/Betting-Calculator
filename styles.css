@@ -4,6 +4,7 @@
   --gray-200: #767676;
   --gray-500: #171717;
   --orange: rgb(220, 150, 22);
+  --error: rgb(196, 41, 41);
 }
 
 html, body {
@@ -62,7 +63,7 @@ input[type=number]::-webkit-inner-spin-button {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: url('/assets/images/background.png');
+  background: url('assets/images/background.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -108,6 +109,14 @@ input[type=number]::-webkit-inner-spin-button {
   width: 100%;
 }
 
+.form__errorText {
+  text-align: center;
+  font-size: 13px;
+  line-height: 10px;
+  font-weight: 400;
+  color: var(--error);
+}
+
 .form__result,
 .form__result-value {
   display: flex;
@@ -131,6 +140,8 @@ input[type=number]::-webkit-inner-spin-button {
   border: 1px solid var(--gray-200);
   border-radius: 6px;
   padding: 12px;
+    margin-bottom: 10px;
+
 }
 
 .form__input,
@@ -152,6 +163,7 @@ input[type=number]::-webkit-inner-spin-button {
   background: var(--orange);
   color: var(--black);
   transition: background 0.1s ease, box-shadow 0.1s ease;
+  margin-bottom: 10px;
 }
 .form__button:hover {
   background: var(--gray-500);

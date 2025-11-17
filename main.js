@@ -6,6 +6,8 @@ let coefficient = document.querySelector('#odds');
 let gameType = document.querySelector('#gameType');
 let potentialWin = document.querySelector('.form__result-value');
 let submitBtn = document.querySelector('.form__button');
+let firstErrorText = document.querySelector('#first-error');
+let secondErrorText = document.querySelector('#second-error');
 
 const historyBetts = [];
 
@@ -17,8 +19,7 @@ const saveBet = {
 };
 
 const isValidValue = (value) => {
-  const num = parseFloat(value);
-  return !isNaN(num) && num > 0;
+  return /^(\d+(\.\d+)?)$/.test(value) && Number(value) > 0;
 };
 
 const calculateWin = () => {
@@ -43,9 +44,11 @@ stake.addEventListener('input', (e) => {
   let value = e.target.value;
 
   if (!isValidValue(value)) {
-    stake.style.borderColor = 'red';
+    firstErrorText.textContent = 'Please enter a bid here';
+    stake.style.borderColor = 'rgb(196, 41, 41)';
     saveBet.stake = null;
   } else {
+    firstErrorText.textContent = '';
     stake.style.borderColor = '';
     saveBet.stake = parseFloat(value);
   }
@@ -57,9 +60,11 @@ coefficient.addEventListener('input', (e) => {
   let value = e.target.value;
 
   if (!isValidValue(value)) {
-    coefficient.style.borderColor = 'red';
+    secondErrorText.textContent = 'Please enter a coefficient here';
+    coefficient.style.borderColor = 'rgb(196, 41, 41)';
     saveBet.coefficient = null;
   } else {
+    secondErrorText.textContent = '';
     coefficient.style.borderColor = '';
     saveBet.coefficient = parseFloat(value);
   }
@@ -75,17 +80,27 @@ submitBtn.addEventListener('click', () => {
     saveBet.coefficient === null ||
     saveBet.potentialWin === null
   ) {
-    stake.style.borderColor = 'red';
-    coefficient.style.borderColor = 'red';
+    firstErrorText.textContent = 'Please enter a bid here';
+    secondErrorText.textContent = 'Please enter a coefficient here';
+    stake.style.borderColor = 'rgb(196, 41, 41)';
+    coefficient.style.borderColor = 'rgb(196, 41, 41)';
+  } else {
+    const resetText = () => {
+      submitBtn.textContent = 'Save Your Bet';
+      submitBtn.style.cursor = 'default';
+    }
+    
+    submitBtn.textContent = 'Saved';
+    setTimeout(resetText, 1500);
+
+    let history = JSON.parse(localStorage.getItem('historyBetts')) || [];
+    history.push({...saveBet});
+
+    if (history.length > 5) {
+      history = history.slice(history.length - 5);
+    }
+
+    localStorage.setItem('historyBetts', JSON.stringify(history));
+    console.log('histories the last of betts', history);
   }
-
-  let history = JSON.parse(localStorage.getItem('historyBetts')) || [];
-  history.push({...saveBet});
-
-  if (history.length > 5) {
-    history = history.slice(history.length - 5);
-  }
-
-  localStorage.setItem('historyBetts', JSON.stringify(history));
-  console.log('histories the last of betts', history);
 });
