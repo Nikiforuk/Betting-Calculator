@@ -4,6 +4,7 @@
   --gray-200: #767676;
   --gray-500: #171717;
   --orange: rgb(220, 150, 22);
+  --error: rgb(196, 41, 41);
 }
 
 html, body {
@@ -56,4 +57,121 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('assets/images/background.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  border: 1px solid var(--orange);
+  gap: 20px;
+  background: var(--gray-500);
+  width: 100%;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+  margin: 0 auto;
+  width: 250px;
+  height: 120px;
+}
+
+.form__box {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__errorText {
+  text-align: center;
+  font-size: 13px;
+  line-height: 10px;
+  font-weight: 400;
+  color: var(--error);
+}
+
+.form__result,
+.form__result-value {
+  display: flex;
+  font-size: 18px;
+  line-height: 12px;
+  gap: 5px;
+}
+
+.form__result-value {
+  font-weight: 600;
+}
+
+.form__label {
+  font-size: 18px;
+  line-height: 16px;
+  margin-bottom: 12px;
+}
+
+.form__input,
+.form__select {
+  border: 1px solid var(--gray-200);
+  border-radius: 6px;
+  padding: 12px;
+    margin-bottom: 10px;
+
+}
+
+.form__input,
+.form__input::placeholder {
+  font-size: 18px;
+  line-height: 12px;
+}
+
+.form__button {
+  margin: 0 auto;
+  max-width: 200px;
+  width: 100%;
+  padding: 16px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--orange);
+  background: var(--orange);
+  color: var(--black);
+  transition: background 0.1s ease, box-shadow 0.1s ease;
+  margin-bottom: 10px;
+}
+.form__button:hover {
+  background: var(--gray-500);
+  box-shadow: 0 3px 15px rgba(255, 255, 255, 0.3);
+  color: inherit;
+}
+
+.footer {
+  text-align: center;
+  padding: 16px;
 }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="/assets/icons/favicon.png">
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -11,6 +11,63 @@
   <title>Betting Calculator</title>
 </head>
 <body>
+  <div class="wrapper">
+    <header class="header"></header>
+    <main class="main">
+      <section class="content">
+        <form class="form">
+          <img class="logo" src="assets/icons/logo.png" alt="logo-image"></img>
+          <div class="form__box">
+            <label class="form__label" for="stake">Bet amount:</label>
+            <input
+              class="form__input"
+              type="number"
+              min="1"
+              id="stake"
+              name="stake"
+              placeholder="Enter the amount"
+            />
+            <span id="first-error" class="form__errorText"></span>
+          </div>
+
+          <div class="form__box">
+            <label class="form__label" for="odds">Coefficient:</label>
+            <input 
+              class="form__input"
+              type="number"
+              id="odds"
+              name="odds"
+              placeholder="For example, 2.5"
+            />
+            <span id="second-error" class="form__errorText"></span>
+          </div>
+
+          <div class="form__box">
+            <label class="form__label" for="gameType">Game type:</label>
+            <select class="form__select" id="gameType" name="gameType">
+              <option class="form__select-option" value="football">Football ⚽️</option>
+              <option class="form__select-option" value="slots">Slots 🎰</option>
+              <option class="form__select-option" value="poker">Poker ♠️</option>
+            </select>
+          </div>
+
+          <div class="form__box">
+            <button type="button" class="form__button">Save Your Bet</button>
+          </div>
+
+          <div class="form__result">
+            <p class="form__label-result">Potential Win:</p>
+            <span class="form__result-value">0.00</span>
+          </div>
+
+        </form>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright">&copy; betting-calculator</p>
+    </footer>
+  </div>
+
   <script src="main.js"></script>
 </body>
 </html>
